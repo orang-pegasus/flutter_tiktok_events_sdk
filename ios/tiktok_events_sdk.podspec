@@ -32,6 +32,6 @@ A new Flutter plugin project.
 
   s.swift_version = '5.0'
   # Security: Pin exact version for consistency and security patches
-  # Using latest stable version 1.5.1 (Released: September 3, 2025)
+  # Using latest stable version 1.6.0 (Released: December 12, 2025)
   s.dependency 'TikTokBusinessSDK', '~> 1.6.0'
 end
