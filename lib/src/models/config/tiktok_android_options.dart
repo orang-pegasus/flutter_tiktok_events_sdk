@@ -5,14 +5,13 @@
 /// automatic event tracking, install logging, and advertiser ID collection.
 ///
 /// By default, all options are set to `false`, meaning the corresponding features are enabled.
-/// Set an option to `true` to disable the associated feature (except for `enableAutoIapTrack`,
-/// which enables a feature when set to `true`).
+/// Set an option to `true` to disable the associated feature
 ///
 /// Usage example:
 /// ```dart
 /// TikTokAndroidOptions androidOptions = TikTokAndroidOptions(
 ///   disableAutoStart: true,
-///   enableAutoIapTrack: true,
+///   disableAutoIapTrack: true,
 /// );
 /// ```
 class TikTokAndroidOptions {
@@ -41,10 +40,10 @@ class TikTokAndroidOptions {
   /// If `true`, the SDK will not log user retention metrics.
   final bool disableRetentionLogging;
 
-  /// Whether to enable automatic in-app purchase (IAP) tracking in the TikTok SDK.
+  /// Whether to disable automatic in-app purchase (IAP) tracking in the TikTok SDK.
   ///
-  /// If `true`, the SDK will automatically track in-app purchases.
-  final bool enableAutoIapTrack;
+  /// If `true`, the SDK will not log in-app purchases.
+  final bool disableAutoIapTrack;
 
   /// Whether to disable advertiser ID collection in the TikTok SDK.
   ///
@@ -54,14 +53,13 @@ class TikTokAndroidOptions {
   /// Creates an instance of [TikTokAndroidOptions] with the specified configuration.
   ///
   /// All options are optional and default to `false`, meaning the corresponding features are enabled
-  /// (except for `enableAutoIapTrack`, which is disabled by default).
   const TikTokAndroidOptions({
     this.disableAutoStart = false,
     this.disableAutoEvents = false,
     this.disableInstallLogging = false,
     this.disableLaunchLogging = false,
     this.disableRetentionLogging = false,
-    this.enableAutoIapTrack = false,
+    this.disableAutoIapTrack = false,
     this.disableAdvertiserIDCollection = false,
   });
 
@@ -79,7 +77,7 @@ class TikTokAndroidOptions {
     bool? disableInstallLogging,
     bool? disableLaunchLogging,
     bool? disableRetentionLogging,
-    bool? enableAutoIapTrack,
+    bool? disableAutoIapTrack,
     bool? disableAdvertiserIDCollection,
   }) {
     return TikTokAndroidOptions(
@@ -90,7 +88,7 @@ class TikTokAndroidOptions {
       disableLaunchLogging: disableLaunchLogging ?? this.disableLaunchLogging,
       disableRetentionLogging:
           disableRetentionLogging ?? this.disableRetentionLogging,
-      enableAutoIapTrack: enableAutoIapTrack ?? this.enableAutoIapTrack,
+      disableAutoIapTrack: disableAutoIapTrack ?? this.disableAutoIapTrack,
       disableAdvertiserIDCollection:
           disableAdvertiserIDCollection ?? this.disableAdvertiserIDCollection,
     );
@@ -111,7 +109,7 @@ class TikTokAndroidOptions {
       'disableInstallLogging': disableInstallLogging,
       'disableLaunchLogging': disableLaunchLogging,
       'disableRetentionLogging': disableRetentionLogging,
-      'enableAutoIapTrack': enableAutoIapTrack,
+      'disableAutoIapTrack': disableAutoIapTrack,
       'disableAdvertiserIDCollection': disableAdvertiserIDCollection,
     };
   }
@@ -125,7 +123,7 @@ class TikTokAndroidOptions {
         other.disableInstallLogging == disableInstallLogging &&
         other.disableLaunchLogging == disableLaunchLogging &&
         other.disableRetentionLogging == disableRetentionLogging &&
-        other.enableAutoIapTrack == enableAutoIapTrack &&
+        other.disableAutoIapTrack == disableAutoIapTrack &&
         other.disableAdvertiserIDCollection == disableAdvertiserIDCollection;
   }
 
@@ -136,7 +134,7 @@ class TikTokAndroidOptions {
         disableInstallLogging.hashCode ^
         disableLaunchLogging.hashCode ^
         disableRetentionLogging.hashCode ^
-        enableAutoIapTrack.hashCode ^
+        disableAutoIapTrack.hashCode ^
         disableAdvertiserIDCollection.hashCode;
   }
 }
